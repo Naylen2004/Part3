@@ -7,7 +7,7 @@
   </head>
   <body>
     <h2>Survey</h2>
-    <form action="/survey" method="post">
+    <form id="survey-form" action="/survey" method="post">
       <label for="question1">Question 1: What is your favorite color?</label>
       <input type="radio" name="answer1" value="red">Red<br>
       <input type="radio" name="answer1" value="blue">Blue<br>
@@ -22,6 +22,17 @@
       
       <button type="submit">Submit</button>
       <button type="button" onclick="location.href='/results'">View results</button>
+      <button type="reset">Reset</button>
+      <button type="button" onclick="location.href='/'">Home Page</button>
     </form>
+<!-- 
+    <script>
+      const form = document.querySelector('#survey-form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        form.reset();
+      });
+    </script>
+  -->
   </body>
 </html>

@@ -1,3 +1,5 @@
+
+
 body {
     background-color: #f0f0f0;
   }
@@ -31,16 +33,21 @@ body {
     padding: 5px;
   }
   
+  
   button[type="submit"],
-  button[type="button"] {
-    display: block;
+  button[type="button"],
+  button[type="reset"]
+   {
+    display: inline-block;
     margin-top: 20px;
+    margin-right:10px;
     padding: 10px 20px;
     background-color: #008CBA;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 160px;
   }
   
   button[type="submit"]:hover,
@@ -48,3 +55,111 @@ body {
     background-color: #005F6B;
   }
   
+
+      body {
+        background-color: #f0f0f0;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        background-color: white;
+      }
+      th, td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ccc;
+      }
+      th {
+        background-color: #f0f0f0;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+  
+      .survey-container {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .survey-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .survey-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+      }
+      
+      .survey-row-1 .survey-question {
+        background-color: #d3d3d3;
+      }
+      
+      .survey-row-2 .survey-question {
+        background-color: #e3f1c7;
+      }
+      
+      .survey-row-3 .survey-question {
+        background-color: #c1eecf;
+      }
+      
+      .survey-row-4 .survey-question {
+        background-color: #afe4f7;
+      }
+      
+      .survey-row-5 .survey-question {
+        background-color: #f6b5b5;
+      }
+      
+      .survey-heading {
+        margin: 0;
+        font-size: 18px;
+      }
+      
+      .survey-button {
+        font-size: 16px;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+      
+      .survey-button:hover {
+        background-color: #0062cc;
+      }
+      
+      .topbar {
+        background-color: #0a0a0a;
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px;
+        height: 40px;
+      }
+      .topbar-button {
+        margin-left: 10px;
+        background-color: #e8617f;
+        color: rgb(255, 255, 255);
+        border: none;
+        padding: 10px 10px;
+        border-radius: 4px;
+        cursor: pointer;;
+        width: 120px;
+      }
+      .topbar-button:hover {
+        background-color: rgb(238, 215, 13);
+      }
+      
