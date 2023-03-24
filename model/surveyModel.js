@@ -1,9 +1,9 @@
 //const mongoose = require('mongoose');
 // Connect to the database
-mongoose.connect('mongodb://localhost/survey-website', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect('mongodb://localhost/survey-website', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 import mongoose from 'mongoose';
 
