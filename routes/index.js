@@ -5,5 +5,5 @@ const router = Router();
 
 router.get('/', DisplayHomePage);
 router.get('/survey', DisplaySurveyPage);
-  
+
 export default router;

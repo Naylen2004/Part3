@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import logger from 'morgan';
 import session from 'express-session';
 
-import { Survey } from './model/surveyModel.js';
+//import { Survey } from './model/surveyModel.js';
 
 // ES2022 Modules fix for __dirname
 import path, {dirname} from 'path';
@@ -19,6 +19,7 @@ import { Secret, MongoURI } from './config/index.js';
 
 // Import Routes
 import indexRouter from './routes/index.js';
+import surveyRouter from './routes/survey.js';
 
 //Complete DB Configuration
 mongoose.connect(MongoURI);
@@ -53,28 +54,6 @@ app.use(session({
 }));
 
 app.use('/', indexRouter);
-
-app.post('/survey', async (req, res) => {
-    const survey = new Survey({
-      question: 'Question 1: What is your favorite color?',
-      answer: req.body.answer1,
-      reason: req.body.reason1,
-    });
-   await survey.save();
-  
-    const survey2 = new Survey({
-      question: 'Question 2: What is your favorite animal?',
-      answer: req.body.answer2,
-      reason: req.body.reason2,
-    });
-    await survey2.save();
-    
-   // res.send('Thanks for taking the survey!');
-  });
-  
-  app.get('/results', async (req, res) => {
-      const surveys = await Survey.find();
-      res.render('results', { surveys });
-    });
+app.use('/', surveyRouter);
 
 export default app;
