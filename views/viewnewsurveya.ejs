@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Results</title>
+</head>
+<body>
+    <h1>Survey Results</h1>
+    <!-- cheks if there are any survey in the array -->
+    <% if (newestsurvey.length === 0) { %>
+        <p>No surveys found.</p>
+    <% } else { %>
+      <!-- interate each question & display results -->
+        <% for (let i = 0; i < newestsurvey.length; i++) { %>
+          <!-- Displays type of survey -->
+            <h2><%= newestsurvey[i].quiz %></h2>
+            <p>
+            <% for (let j = 0; j < newestsurvey[i].questions.length; j++) { %>
+                <%= newestsurvey[i].questions[j].question %>:
+                <%= newestsurvey[i].questions[j].options.join(', ') %> |
+                Correct Response: <%= newestsurvey[i].questions[j].response %><br>
+            <% } %>
+            </p>
+            <hr>
+        <% } %>
+    <% } %>
+    <a href="/">Back to survey form</a>
+   <!--  <button onclick="location.href='/createsurvey'">Create New Survey</button> -->
+</body>
+</html>

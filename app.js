@@ -3,8 +3,18 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import session from 'express-session';
+// sunday night change begin
+//const { urlencoded, json } = express;
+const app = express();
+import { urlencoded, json } from 'express';
+import createnewsurvey from './routes/createnewsurvey.js';
+import viewnewsurvey from './routes/viewnewsurvey.js';
+app.use(urlencoded({ extended: true }));
+app.use(json());
 
-//import { Survey } from './model/surveyModel.js';
+//app.use(createnewsurveyRoutes);
+
+//sunday night change end
 
 // ES2022 Modules fix for __dirname
 import path, {dirname} from 'path';
@@ -18,10 +28,15 @@ import mongoose from 'mongoose';
 import { Secret, MongoURI } from './config/index.js';
 
 // Import Routes
+// Import routers
 import indexRouter from './routes/index.js';
 import surveyRouter from './routes/survey.js';
+import createNewSurveyRouter from './routes/createnewsurvey.js';
+import viewNewSurveyRouter from './routes/viewnewsurvey.js';
 
-//Complete DB Configuration
+
+import newsurveyRouter from './routes/createnewsurvey.js';
+
 mongoose.connect(MongoURI);
 const db = mongoose.connection;
 
@@ -30,7 +45,6 @@ db.on('open', () => console.log("Connected to MongoDB"));
 db.on('error', () => console.log("Mongo Connection Error"));
 
 //Instantiate the Express Application
-const app = express();
 
 //EJS Setup
 app.set('views', path.join(__dirname, '/views'));
@@ -54,6 +68,10 @@ app.use(session({
 }));
 
 app.use('/', indexRouter);
+app.use(createnewsurvey);
+app.use(viewnewsurvey);
 app.use('/', surveyRouter);
+app.use('/', createNewSurveyRouter);
+app.use('/', viewNewSurveyRouter); // Add this line
 
 export default app;

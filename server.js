@@ -2,14 +2,19 @@ import debug from 'debug';
 debug('comp229')
 
 import http from 'http';
+import bodyParser from 'body-parser';
 
 //import the app
 import app from './app.js';
+
 
 const PORT = normalizePort(process.env.PORT || 3000);
 app.set('port', PORT);
 
 const server = http.createServer(app);
+
+//const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 server.listen(PORT);
 server.on('error', onError);
@@ -30,20 +35,21 @@ function normalizePort(val){
     return false;
 }
 
-function onError(){
+function onError(error){
     if(error.syscall !== 'listen'){
         throw error;
     }
 
-    let bind = typeof port == 'string'
-    ?'Pipe ' + port
-    :'Port ' + port;
+    let bind = typeof PORT == 'string'
+    ?'Pipe ' + PORT
+    :'Port ' + PORT;
 
     switch (error.code){
-        case 'EACCESS':
+        case 'EACCES':
             console.error(bind + ' requires elevated privileges');
+            process.exit(1);
             break;
-        case 'EADDINUSE':
+        case 'EADDRINUSE':
             console.error(bind + ' is already in use');
             process.exit(1);
             break;
